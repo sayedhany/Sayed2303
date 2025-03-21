@@ -1,0 +1,37 @@
+@import "/src/styles/utilities";
+:host{
+  display: flex;
+  justify-content: center;
+}
+.home_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  @media (min-width: 768px) {
+    width: 29vw;
+   
+  }
+  @media (max-width: 768px) {
+    width: 80vw;
+
+  }
+}
+.img-container{
+  width: 100%;
+  // height: toRem(200);
+  img{
+    width: 100%;
+  }
+}
+.categories{
+  max-width: 100%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.btn.active{
+  color: var(--text-color);
+  border: none;
+  background: var(--primary-color);
+}

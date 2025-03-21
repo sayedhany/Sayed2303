@@ -1,8 +1,4 @@
 /* _common.scss */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--background-color);
-}
 html {
   font-size: 16px;
 
@@ -21,4 +17,16 @@ html {
   @media (max-width: 576px) {
     font-size: 12px;
   }
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+
 }

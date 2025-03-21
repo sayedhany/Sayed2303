@@ -1,13 +1,48 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { EMPTY, Subscription } from 'rxjs';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'orange-app';
+  title = 'orange-task';
+  subscriptions = new Subscription();
+  constructor(
+    private titleService: Title,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.setPageTitle();
+  }
+
+  setPageTitle() {
+    this.router.events
+      .pipe(
+        filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+        map(() => {
+          let route = this.activatedRoute.firstChild;
+          while (route?.firstChild) {
+            route = route.firstChild;
+          }
+          return route;
+        }),
+        switchMap((route) => route?.data ?? EMPTY),
+        tap((data) => console.log(data))
+      )
+      .subscribe((data) => {
+        this.titleService.setTitle(data['title']);
+      });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
+  
 }
