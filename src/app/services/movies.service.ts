@@ -22,6 +22,8 @@ export class MoviesService {
   getCategories():Observable<any>{
     return this.data.pipe(map((res:any) => res['Categories']));
   }
- 
+  getBranches(): Observable<any>{
+    return this.data.pipe(map((res:any) => res['Cinemas']));
+  }
   
 }

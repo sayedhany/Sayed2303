@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+.card{
+  background-color: #5A5A5C;
+  border-radius: 10px;
+  &:hover{
+    transform: scale(1.05);
+  }
+}

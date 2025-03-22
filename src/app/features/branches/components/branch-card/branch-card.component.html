@@ -1,0 +1,20 @@
+<div class="card d-flex flex-row gap-2 overflow-hidden">
+  <img [width]="113" [height]="130" [src]="branch?.CinemaImage" alt="branch" />
+  <div class="card-body text-white py-3">
+    <div class="name-rating d-flex justify-content-between mb-3">
+      <h6 class="card-title fw-bold">{{ branch?.CinemaName }}</h6>
+      <div class="rating d-flex align-items-center gap-1">
+        <img [width]="20" [height]="20" src="assets/images/Star.svg" alt="star" />
+        <span class="card-text">{{ branch?.CinemaRating }}</span>
+      </div>
+    </div>
+    <p class="mb-0 d-flex align-items-center gap-1">
+      <img [width]="20" [height]="20" src="assets/images/Ticket_Voucher.svg" alt="star" />
+      {{ branch?.TicketsAvailable }}
+    </p>
+    <p class="mb-0 d-flex align-items-center gap-1">
+      <img [width]="20" [height]="20" src="assets/images/Recliner.svg" alt="star" />
+      {{ branch?.CinemaHalls }} Cinemas
+    </p>
+  </div>
+</div>

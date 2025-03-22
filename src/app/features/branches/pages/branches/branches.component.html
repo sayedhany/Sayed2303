@@ -1,0 +1,26 @@
+<div class="branches px-3 py-2">
+  <div class="branches-header d-flex align-items-center gap-2">
+    <button class="btn back" (click)="goBack()">
+      <img src="assets/images/Arrow_Right_LG.svg" alt="Arrow_Right_LG">
+    </button>
+    <h4 class="mb-0">Select Branch</h4>
+  </div>
+  <form class="search-area position-relative">
+    <img [width]="25" [height]="25" loading="lazy" src="assets/images/Search.svg" alt="search" />
+    <input [(ngModel)]="searchText" name="searchText" type="text" placeholder="Search Malls or Branch" class="form-control" />
+  </form>
+  <div class="branches-list mt-4">
+    <ng-container *ngIf="branches().length > 0; else noBranches">
+      <ul class="list-unstyled d-flex flex-column gap-3">
+        <li *ngFor="let branch of branches()| filterPipe:searchText:'CinemaName'" >
+          <app-branch-card [branch]="branch" ></app-branch-card>
+        </li>
+      </ul>
+    </ng-container>
+    <ng-template #noBranches>
+      <div class="no-branches d-flex justify-content-center gap-3 align-items-center flex-column h-100">
+        <img src="assets/images/empty.svg" alt="empty" />
+        <h3>No branches found.</h3>
+      </div>
+    </ng-template>
+</div> 

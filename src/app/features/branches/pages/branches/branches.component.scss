@@ -1,0 +1,40 @@
+@import "/src/styles/utilities";
+:host {
+  display: block;
+}
+.search-area{
+  .form-control{
+    height: toRem(48);
+    border-radius: 25px;
+    border-color: transparent;
+    box-shadow: none;
+    background-color: #696969CC;
+    padding-left: 3.5rem;
+    color: var(--text-color);
+    &:focus{
+      background-color: #696969;
+      border-color: #696969;
+      // box-shadow: none;
+    }
+    &::placeholder{
+      color: #B1B1B1;
+    }
+  }
+  img{
+    position: absolute;
+    top: toRem(11);
+    left: toRem(18);
+  }
+}
+.btn{
+  &.back{
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    z-index: 1;
+  }
+}
+.no-branches{
+  height: 50vh !important;
+}
