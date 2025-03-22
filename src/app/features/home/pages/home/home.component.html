@@ -10,17 +10,25 @@
       
     </div>
   
-    <ul class=" p-2 list-unstyled my-2 categories d-flex overflow-auto gap-2">
-      <ng-container *ngIf="moviesCategories()">
-
+    <ng-container *ngIf="moviesCategories().length > 0">
+      <ul class=" p-2 list-unstyled my-2 categories d-flex overflow-auto gap-2">
         <li *ngFor="let category of moviesCategories()" class="d-flex align-items-center" (click)="activeCategory.set(category)">
           <button class="btn py-1 text-nowrap {{activeCategory().CategoryID === category.CategoryID && 'active'}} text-white">{{category?.CategoryName}}</button>
         </li>
-      </ng-container>
       </ul>
+    </ng-container>
+   
     <h2 class="w-100 p-2 mb-2">Now Showing</h2>
   </div>
-  <app-movies [movies]="activeCategory()?.Films"/>
+  <ng-container *ngIf="activeCategory()?.Films.length;else noMovies">
+    <app-movies [movies]="activeCategory()?.Films"/>
+  </ng-container>
+  <ng-template #noMovies>
+    <div class="d-flex justify-content-center gap-3 align-items-center flex-column h-100">
+      <img src="assets/images/empty.svg" alt="empty" />
+      <h3>No movies found.</h3>
+    </div>
+  </ng-template>
 
 
 </div>

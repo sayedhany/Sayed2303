@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,11 @@ export class MoviesService {
   data!: Observable<any>;
   constructor(private http:HttpClient) { 
     this.getDate();
+    console.log("work");
+    
   }
   getDate(){ 
-    this.data = this.http.get(this.API());
+    this.data = this.http.get(this.API()).pipe(shareReplay());
   }
   getCommingSoonImage(){
     return this.data.pipe(map((res:any) => res['ComingSoonBanner']));
@@ -20,5 +22,6 @@ export class MoviesService {
   getCategories():Observable<any>{
     return this.data.pipe(map((res:any) => res['Categories']));
   }
+ 
   
 }

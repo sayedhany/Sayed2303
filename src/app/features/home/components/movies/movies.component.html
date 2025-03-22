@@ -1,11 +1,19 @@
-<swiper-container  [slidesPerView]="3"
+<swiper-container #swiper [slidesPerView]="3"
 [centeredSlides]="true"
 [spaceBetween]="15"
 
-class="movie-swiper d-flex">
-  <swiper-slide *ngFor="let movie of movies">
-    <img [src]="movie.FilmImage" alt="Slide 1" />
-  </swiper-slide>
+class="movie-swiper d-flex position-relative">
+  <ng-container *ngFor="let movie of movies">
+    <swiper-slide  class="d-flex flex-column " (click)="goToMovieDetails(movie)">
+      <img loading="lazy" [src]="movie.FilmImage" alt="Slide 1" />
+      <div class="film-info position-absolute bottom-0 ">
+        <h3 >{{movie.FilmName}}</h3>
+        <ul class="list-unstyled d-flex gap-2 flex-wrap">
+            <li *ngFor="let tag of movie.Tags.slice(0,3)" class="badge bg-secondary text-white">{{tag}}</li>
+        </ul>
 
+      </div>
+    </swiper-slide>
+  </ng-container>
 
 </swiper-container>

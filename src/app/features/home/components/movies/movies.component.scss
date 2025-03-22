@@ -1,18 +1,30 @@
 :host {
   display: block;
-  max-width: 100%;
+ 
+  max-width: 50%;
+  @media (max-width: 768px) {
+    max-width: 100%;
+
+  }
 }
 swiper-slide{
   transform: scale(0.7);
   transition: transform 0.3s ease;
   border-radius: 10px;
-  overflow: hidden;
+  // overflow: hidden;
   object-fit: contain;
   width: 178px !important;
   height: 250px !important;
+  cursor: pointer;
+  .film-info{
+    display: none;
+  }
   &.swiper-slide-active{
     transform: scale(1.1);
     width: 100%;
+    .film-info{
+      display: block;
+    }
   }
   img{
     border-radius: 10px;
