@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, effect, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MoviesService } from 'src/app/services/movies.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-movies',
   standalone: true,
@@ -11,5 +12,7 @@ import { CommonModule } from '@angular/common';
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MoviesComponent {
+  @Input() movies:any;
+
 
 }

@@ -3,14 +3,9 @@
 [spaceBetween]="15"
 
 class="movie-swiper d-flex">
-  <swiper-slide>
-    <img src="https://image.tmdb.org/t/p/w440_and_h660_face/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg" alt="Slide 1" />
+  <swiper-slide *ngFor="let movie of movies">
+    <img [src]="movie.FilmImage" alt="Slide 1" />
   </swiper-slide>
-  <swiper-slide>
-    <img src="https://media.themoviedb.org/t/p/w440_and_h660_face/wTnV3PCVW5O92JMrFvvrRcV39RU.jpg" alt="Slide 2" />
-  </swiper-slide>
-  <swiper-slide>
-    <img src="https://image.tmdb.org/t/p/w440_and_h660_face/o04jZs5SXhbvhqO4981W7KJXOWZ.jpg" alt="Slide 3" />
-  </swiper-slide>
+
 
 </swiper-container>

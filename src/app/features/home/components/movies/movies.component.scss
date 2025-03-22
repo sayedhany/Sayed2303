@@ -7,17 +7,15 @@ swiper-slide{
   transition: transform 0.3s ease;
   border-radius: 10px;
   overflow: hidden;
-  object-fit: cover;
-  height: 440px;
-  @media (max-width: 768px) {
-    width: 178px !important;
-    height: 300px !important;
-  }
+  object-fit: contain;
+  width: 178px !important;
+  height: 250px !important;
   &.swiper-slide-active{
     transform: scale(1.1);
     width: 100%;
   }
   img{
+    border-radius: 10px;
     // width: 95%;
     height: 100%;
     width: 100%;

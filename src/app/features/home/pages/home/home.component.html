@@ -4,32 +4,23 @@
     <div class="header-comming-soon p-2">
       <app-header/>
       <h4 class="mt-3">Coming Soon</h4>
-      <div class="img-container overflow-hidden rounded-3">
-        <img src="assets/images/Featured-Card.png" alt="coming-soon" />
+      <div class="img-container overflow-hidden rounded-3" *ngIf="commingSoonImage()">
+        <img [src]="commingSoonImage()" alt="coming-soon" />
       </div>
       
     </div>
   
     <ul class=" p-2 list-unstyled my-2 categories d-flex overflow-auto gap-2">
-    <li>
-      <button class="btn py-1 active text-white">Action</button>
-    </li>
-    <li>
-      <button class="btn py-1 text-white">Comedy</button>
-    </li>
-    <li>
-      <button class="btn py-1 text-white">Romance</button>
-    </li>
-    <li>
-      <button class="btn py-1 text-white">Thriller</button>
-    </li>
-    <li>
-      <button class="btn py-1 text-white">Documentary</button>
-    </li>
-    </ul>
+      <ng-container *ngIf="moviesCategories()">
+
+        <li *ngFor="let category of moviesCategories()" class="d-flex align-items-center" (click)="activeCategory.set(category)">
+          <button class="btn py-1 text-nowrap {{activeCategory().CategoryID === category.CategoryID && 'active'}} text-white">{{category?.CategoryName}}</button>
+        </li>
+      </ng-container>
+      </ul>
     <h2 class="w-100 p-2 mb-2">Now Showing</h2>
   </div>
-  <app-movies/>
+  <app-movies [movies]="activeCategory()?.Films"/>
 
 
 </div>
